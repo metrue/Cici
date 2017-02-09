@@ -1,6 +1,6 @@
 {
-  "title": "Seal",
-  "domain": "Seal.com?",
+  "title": "小聊电台",
+  "domain": "asmalltalk.com",
   "postsDir": "posts",
-  "outputDir": "_site"
+  "outputDir": "../asmalltalk.github.io/"
 }

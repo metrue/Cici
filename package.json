@@ -8,8 +8,7 @@
     "build": "./node_modules/.bin/babel-node bin/build.js",
     "preserve": "npm run build",
     "serve": "http-server _site",
-    "predeploy": "npm run build",
-    "deploy": "./bin/deploy_to_github_page.sh"
+    "deploy": "./devops/deploy.sh"
   },
   "engines": {
     "node": ">=4",

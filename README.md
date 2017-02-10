@@ -43,7 +43,7 @@ then put it into npm script, hit <code> npm run deploy </code> to do the deploym
 
 ## Thanks
 
-inspired from [vue-ghpages-blog](https://github.com/viko16/vue-ghpages-blog)
+inspired by [vue-ghpages-blog](https://github.com/viko16/vue-ghpages-blog)
 
 ## LICENSE
 

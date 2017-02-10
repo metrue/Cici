@@ -1,7 +1,7 @@
 {
   "name": "Seal",
   "version": "0.0.1",
-  "description": "A blog based on GitHub Pages by Vue.js 2 + Webpack 2",
+  "description": "Yet another static website generator built on top of Vue 2 and Webpack",
   "main": "src/main.js",
   "scripts": {
     "prebuild": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",

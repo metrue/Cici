@@ -41,6 +41,10 @@ END
 
 then put it into npm script, hit <code> npm run deploy </code> to do the deployment. That's it, have fun.
 
+## Thanks
+
+inspired by [vue-ghpages-blog](https://github.com/viko16/vue-ghpages-blog)
+
 ## LICENSE
 
 MIT

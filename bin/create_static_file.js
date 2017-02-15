@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import { createRenderer } from 'vue-server-renderer'
 import PostPage from '../lib/js/PostPage.build.js'
 import HomePage from '../lib/js/HomePage.build.js'
-import CONFIG from '../config'
+import CONFIG from '../config/build.json'
 
 async function listPosts(postsPath) {
   return new Promise((resolve, reject) => {

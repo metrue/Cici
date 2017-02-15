@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import CONFIG from '../../../config'
+  import CONFIG from '../../../config/build'
 
   export default {
     name: 'Header',

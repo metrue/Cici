@@ -7,7 +7,7 @@
 <style lang="stylus" src="./Footer.styl"></style>
 
 <script>
-  import CONFIG from '../../../config'
+  import CONFIG from '../../../config/build'
 
   export default {
     name: 'Footer',

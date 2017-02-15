@@ -1,17 +1,17 @@
 #!/bin/bash
 
-target='seal@seal.com'
+target='<%= user %>@<%= host %>'
 ssh ${target} <<END
   docker rmi \$(docker images --filter "dangling=true" -q --no-trunc)
-  rm -rf /tmp/seal.com?
-  git clone ://github.com/metrue/Seal.git /tmp/seal.com?
+  rm -rf /tmp/<%= domain %>
+  git clone <%= repo %> /tmp/<%= domain %>
   cd /tmp/minghe.me
 
   docker run --rm -p 80:80 -p 443:443 \
     -v /etc/letsencrypt:/etc/letsencrypt \
     quay.io/letsencrypt/letsencrypt auth \
-    --standalone -m seal@seal.com? --agree-tos \
-    -d seal.com?
+    --standalone -m <%= email %> --agree-tos \
+    -d <%= domain %>
 
     docker run --rm -p 80:80 -p 443:443 \
       -v /etc/letsencrypt:/etc/letsencrypt \

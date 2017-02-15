@@ -1,4 +1,4 @@
-import CONFIG from '../../../config'
+import CONFIG from '../../../config/build'
 import { parseName } from '../../utils'
 
 export default {

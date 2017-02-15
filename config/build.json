@@ -2,5 +2,6 @@
   "title": "Seal",
   "domain": "seal.com?",
   "postsDir": "posts",
-  "outputDir": "public"
+  "outputDir": "public",
+  "ga": "UA-52720212-1"
 }

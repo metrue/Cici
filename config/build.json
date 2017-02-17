@@ -3,5 +3,6 @@
   "domain": "seal.com?",
   "postsDir": "posts",
   "outputDir": "public",
-  "ga": "UA-52720212-1"
+  "ga": "UA-52720212-1",
+  "website": "https://github.com/metrue/Seal"
 }

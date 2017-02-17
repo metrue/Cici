@@ -41,6 +41,11 @@ END
 
 then put it into npm script, hit <code> npm run deploy </code> to do the deployment. That's it, have fun.
 
+## Showcase
+
+* [小聊电台](https://asmalltalk.com)
+* [minghe.me](https://minghe.me)
+
 ## Thanks
 
 inspired by [vue-ghpages-blog](https://github.com/viko16/vue-ghpages-blog)

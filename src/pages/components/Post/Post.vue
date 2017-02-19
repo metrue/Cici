@@ -12,8 +12,8 @@
 
 <script>
   import Vue from 'vue'
-  import marked from '../../utils/render.js'
-  import { parseName } from '../../utils'
+  import marked from '../../../utils/render.js'
+  import { parseName } from '../../../utils'
 
   export default {
     name: 'postView',

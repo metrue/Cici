@@ -5,9 +5,9 @@
   "bin": "./bin/cici.js",
   "scripts": {
     "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "transpile": "[ -d src/builder ] && ./node_modules/.bin/babel src/builder --out-dir lib/builder || true",
+    "transpile": "./node_modules/.bin/babel src/utils --out-dir lib/utils && ./node_modules/.bin/babel src/builder --out-dir lib/builder ",
     "prestart": "npm run bundle && npm run transpile",
-    "start": "./bin/seal.js && http-server public",
+    "start": "./bin/cici.js && http-server public",
     "pretest": "npm run transpile",
     "test": "mocha --ui bdd --compilers js:babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks -t 10000 test"
   },

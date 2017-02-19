@@ -8,7 +8,7 @@ const tpl = `
   <meta name="theme-color" content="#ffffff">
   <link href="/css/build.HomePage.css" rel="stylesheet">
   <link href="/css/build.PostPage.css" rel="stylesheet">
-  <title> {{ title }}</title>
+  <title> <%= title %></title>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -22,7 +22,7 @@ const tpl = `
 <body>
   <%- pageBody %>
   <footer class="footer">
-    Copyright ©2014-2017 <a href="<%= website %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Seal">Seal</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
+    Copyright ©2014-2017 <a href="<%= website %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
   </footer>
 <body>
 </html>

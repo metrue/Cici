@@ -1,12 +1,13 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { createRenderer } from 'vue-server-renderer'
-import CONFIG from '../../config/build.json'
-import mkdirp from 'mkdirp'
-
 import ejs from 'ejs'
+import mkdirp from 'mkdirp'
+import { createRenderer } from 'vue-server-renderer'
+
+import CONFIG from '../../config/build.json'
 import PostPage from '../pages/js/PostPage.build.js'
 import HomePage from '../pages/js/HomePage.build.js'
+import { parseName } from '../utils'
 
 import HOME_TEMPLATE from './home.tpl'
 import PAGE_TEMPLATE from './page.tpl'
@@ -98,8 +99,9 @@ export default class Builder {
     const filename = path.basename(inputFile)
     const markdownContent = await this.getContent(inputFile)
 
+    const { title } = parseName(filename)
     const html = await this.transform(PostPage, [filename, markdownContent])
-    const rets = ejs.render(PAGE_TEMPLATE, { ...CONFIG, pageBody: html })
+    const rets = ejs.render(PAGE_TEMPLATE, { ...CONFIG, pageBody: html, title })
 
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, '_posts', filename.replace(/\.md$/, '.html')), rets, 'utf8', (err) => {

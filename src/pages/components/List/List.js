@@ -1,4 +1,5 @@
-import { parseName } from '../../utils'
+import { parseName } from '../../../utils'
+import CONFIG from '../../../../config/build'
 
 export default {
   name: 'listView',
@@ -19,7 +20,8 @@ export default {
     })
 
     return {
-      lists: sortedList
+      lists: sortedList,
+      title: CONFIG.title
     }
   }
 }

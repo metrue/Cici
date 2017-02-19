@@ -7,7 +7,9 @@ import ejs from 'ejs'
 import PostPage from '../lib/js/PostPage.build.js'
 import HomePage from '../lib/js/HomePage.build.js'
 
-const TEMPLATE_FILE = path.join(__dirname, 'template.ejs')
+import HOME_TEMPLATE from './home.tpl'
+import PAGE_TEMPLATE from './page.tpl'
+
 
 const DEFAULT_INPUT_DIR = './posts'
 const DEFAULT_OUTPUT_DIR = './public'
@@ -16,6 +18,36 @@ const BUILD_DONE = 'BUILD_DONE'
 
 const ABS_PATH_REGEX = /^\//
 const PWD = process.cwd()
+
+const TEMPLATE = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="theme-color" content="#ffffff">
+  <link href="/css/build.HomePage.css" rel="stylesheet">
+  <link href="/css/build.PostPage.css" rel="stylesheet">
+  <title> {{ title }}</title>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '<%= ga %>', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <%- pageBody %>
+  <footer class="footer">
+    Copyright ©2014-2017 <a href="<%= website %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Seal">Seal</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
+  </footer>
+<body>
+</html>
+`
 
 export default class Builder {
   constructor(config = {}) {
@@ -39,9 +71,9 @@ export default class Builder {
     })
   }
 
-  loadTemplate() {
+  loadTemplate(tplPath) {
     return new Promise((resolve, reject) => {
-      fs.readFile(TEMPLATE_FILE, 'utf8', (err, data) => {
+      fs.readFile(tplPath, 'utf8', (err, data) => {
         if (err) {
           reject(err)
         } else {
@@ -87,12 +119,11 @@ export default class Builder {
   }
 
   async buildPage(inputFile) {
-    const tpl = await this.loadTemplate()
     const filename = path.basename(inputFile)
     const markdownContent = await this.getContent(inputFile)
 
     const html = await this.transform(PostPage, [filename, markdownContent])
-    const rets = ejs.render(tpl, { ...CONFIG, pageBody: html })
+    const rets = ejs.render(PAGE_TEMPLATE, { ...CONFIG, pageBody: html })
 
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, '_posts', filename.replace(/\.md$/, '.html')), rets, 'utf8', (err) => {
@@ -118,9 +149,8 @@ export default class Builder {
   }
 
   async buildHome(titles) {
-    const tpl = await this.loadTemplate()
     const html = await this.transform(HomePage, [titles])
-    const rets = ejs.render(tpl, { ...CONFIG, pageBody: html })
+    const rets = ejs.render(HOME_TEMPLATE, { ...CONFIG, pageBody: html })
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, 'index.html'), rets, 'utf8', (err) => {
         if (err) {

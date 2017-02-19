@@ -1,6 +1,6 @@
 {
   "name": "cici",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Yet another static website generator built on top of Vue 2 and Webpack",
   "bin": "./bin/cici.js",
   "scripts": {

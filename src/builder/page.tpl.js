@@ -22,7 +22,7 @@ const tpl = `
 <body>
   <%- pageBody %>
   <footer class="footer">
-    Copyright ©2014-2017 <a href="<%= website %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Seal">Seal</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
+    Copyright ©<%= copyRightYear %> <a href="http://<%= %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
   </footer>
 <body>
 </html>

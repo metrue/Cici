@@ -4,7 +4,6 @@ import ejs from 'ejs'
 import mkdirp from 'mkdirp'
 import { createRenderer } from 'vue-server-renderer'
 
-import CONFIG from '../../config'
 import PostPage from '../pages/js/PostPage.build.js'
 import HomePage from '../pages/js/HomePage.build.js'
 import { parseName } from '../utils'
@@ -22,6 +21,7 @@ const PWD = process.cwd()
 
 export default class Builder {
   constructor(config = {}) {
+    this.config = config
     this.inputDir = config.inputDir || DEFAULT_INPUT_DIR
     this.outputDir = config.outputDir || DEFAULT_OUTPUT_DIR
     this.title = config.title || 'Cici'
@@ -102,7 +102,7 @@ export default class Builder {
 
     const { title } = parseName(filename)
     const html = await this.transform(PostPage, [filename, markdownContent])
-    const rets = ejs.render(PAGE_TEMPLATE, { ...CONFIG, pageBody: html, title })
+    const rets = ejs.render(PAGE_TEMPLATE, { ...this.config, pageBody: html, title })
 
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, '_posts', filename.replace(/\.md$/, '.html')), rets, 'utf8', (err) => {
@@ -129,7 +129,7 @@ export default class Builder {
 
   async buildHome(titles) {
     const html = await this.transform(HomePage, [this.title, titles])
-    const rets = ejs.render(HOME_TEMPLATE, { ...CONFIG, pageBody: html })
+    const rets = ejs.render(HOME_TEMPLATE, { ...this.config, pageBody: html })
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, 'index.html'), rets, 'utf8', (err) => {
         if (err) {

@@ -24,6 +24,7 @@ export default class Builder {
   constructor(config = {}) {
     this.inputDir = config.inputDir || DEFAULT_INPUT_DIR
     this.outputDir = config.outputDir || DEFAULT_OUTPUT_DIR
+    this.title = config.title || 'Cici'
   }
 
   prebuild() {
@@ -127,7 +128,7 @@ export default class Builder {
   }
 
   async buildHome(titles) {
-    const html = await this.transform(HomePage, [titles])
+    const html = await this.transform(HomePage, [this.title, titles])
     const rets = ejs.render(HOME_TEMPLATE, { ...CONFIG, pageBody: html })
     return new Promise((resolve, reject) => {
       fs.writeFile(path.join(this.outputDir, 'index.html'), rets, 'utf8', (err) => {

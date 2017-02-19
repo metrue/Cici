@@ -15,7 +15,7 @@
     "node": ">=4",
     "npm": ">=3"
   },
- "directories": {
+  "directories": {
     "lib": "lib"
   },
   "repository": {
@@ -75,6 +75,7 @@
     "webpack-dev-server": "2.1.0-beta.11"
   },
   "dependencies": {
+    "commander": "^2.9.0",
     "ejs": "^2.5.5",
     "es6-promise": "^4.0.0",
     "front-matter": "^2.1.0",

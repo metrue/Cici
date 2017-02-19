@@ -1,9 +1,8 @@
 import { parseName } from '../../../utils'
-import CONFIG from '../../../../config'
 
 export default {
   name: 'listView',
-  props: ['list'],
+  props: ['title', 'list'],
 
   data() {
     const newList = this.list.map((p) => parseName(p))
@@ -21,7 +20,7 @@ export default {
 
     return {
       lists: sortedList,
-      title: CONFIG.title
+      title: this.title,
     }
   }
 }

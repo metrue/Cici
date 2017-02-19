@@ -9,10 +9,10 @@
     "prepareConfig": "./node_modules/.bin/babel-node bin/prepare_config.js",
     "preserve": "npm run build",
     "serve": "http-server public",
-    "deploy": "./devops/deploy.sh",
+    "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "transpile": "[ -d tools ] && ./node_modules/.bin/babel tools --out-dir sloot || true",
-    "prestart": "npm run transpile",
-    "start": "./bin/seal.js",
+    "prestart": "npm run bundle && npm run transpile",
+    "start": "./bin/seal.js && http-server public",
     "pretest": "npm run transpile",
     "test": "mocha --ui bdd --compilers js:babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks -t 10000 test"
   },

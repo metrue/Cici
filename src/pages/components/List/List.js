@@ -1,4 +1,3 @@
-import CONFIG from '../../../config/build'
 import { parseName } from '../../utils'
 
 export default {
@@ -20,8 +19,7 @@ export default {
     })
 
     return {
-      lists: sortedList,
-      title: CONFIG.title
+      lists: sortedList
     }
   }
 }

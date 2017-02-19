@@ -12,13 +12,13 @@ ${pkg.homepage}
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const OUTPUT_DIR = './lib'
+const OUTPUT_DIR = './lib/pages'
 
 module.exports = [{
   target: 'node',
   entry: {
-    PostPage: './src/PostPage.js',
-    HomePage: './src/HomePage.js'
+    PostPage: './src/pages/PostPage.js',
+    HomePage: './src/pages/HomePage.js'
   },
   output: {
     path: path.resolve(__dirname, OUTPUT_DIR),

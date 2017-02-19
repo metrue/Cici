@@ -1,11 +1,12 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { createRenderer } from 'vue-server-renderer'
-import CONFIG from '../config/build.json'
+import CONFIG from '../../config/build.json'
+import mkdirp from 'mkdirp'
 
 import ejs from 'ejs'
-import PostPage from '../lib/js/PostPage.build.js'
-import HomePage from '../lib/js/HomePage.build.js'
+import PostPage from '../pages/js/PostPage.build.js'
+import HomePage from '../pages/js/HomePage.build.js'
 
 import HOME_TEMPLATE from './home.tpl'
 import PAGE_TEMPLATE from './page.tpl'
@@ -22,6 +23,12 @@ export default class Builder {
   constructor(config = {}) {
     this.inputDir = config.inputDir || DEFAULT_INPUT_DIR
     this.outputDir = config.outputDir || DEFAULT_OUTPUT_DIR
+  }
+
+  prebuild() {
+    mkdirp.sync(path.join(this.outputDir, 'css'))
+    mkdirp.sync(path.join(this.outputDir, '_posts'))
+    fs.copySync(path.join(__dirname, '../pages/css'), path.join(this.outputDir, 'css'))
   }
 
   discover() {
@@ -132,6 +139,7 @@ export default class Builder {
   }
 
   start() {
+    this.prebuild()
     this.discover()
       .then((files) => {
         const titles = files.map((f) => path.basename(f))

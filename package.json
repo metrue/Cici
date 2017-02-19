@@ -10,7 +10,7 @@
     "preserve": "npm run build",
     "serve": "http-server public",
     "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "transpile": "[ -d tools ] && ./node_modules/.bin/babel tools --out-dir sloot || true",
+    "transpile": "[ -d src/builder ] && ./node_modules/.bin/babel src/builder --out-dir lib/builder || true",
     "prestart": "npm run bundle && npm run transpile",
     "start": "./bin/seal.js && http-server public",
     "pretest": "npm run transpile",

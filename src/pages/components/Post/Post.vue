@@ -34,29 +34,5 @@
         return marked(this.markdownContent)
       }
     },
-
-    created () {
-    },
-
-    methods: {
-      newTab () {
-        Vue.nextTick(function () {
-          // Load the external link into new tab
-          const linksArray = Array.from(document.querySelectorAll('a'))
-          const currentHost = window.location.host
-          linksArray.forEach(el => {
-            if (el.href && el.host !== currentHost) {
-              el.target = '_blank'
-              // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
-              el.rel = 'noopener noreferrer'
-            }
-          })
-        })
-      }
-    },
-
-    watch: {
-      'htmlFromMarkdown': 'newTab'
-    }
   }
 </script>

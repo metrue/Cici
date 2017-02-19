@@ -1,8 +1,9 @@
 {
-  "name": "Seal",
+  "name": "seal",
   "version": "0.0.1",
   "description": "Yet another static website generator built on top of Vue 2 and Webpack",
   "main": "src/main.js",
+  "bin": "./bin/seal.js",
   "scripts": {
     "prebuild": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "build": "./node_modules/.bin/babel-node bin/create_static_file.js",

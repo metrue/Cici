@@ -1,15 +1,9 @@
 {
-  "name": "seal",
-  "version": "0.0.1",
+  "name": "cici",
+  "version": "0.0.3",
   "description": "Yet another static website generator built on top of Vue 2 and Webpack",
-  "main": "src/main.js",
-  "bin": "./bin/seal.js",
+  "bin": "./bin/cici.js",
   "scripts": {
-    "prebuild": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "build": "./node_modules/.bin/babel-node bin/create_static_file.js",
-    "prepareConfig": "./node_modules/.bin/babel-node bin/prepare_config.js",
-    "preserve": "npm run build",
-    "serve": "http-server public",
     "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "transpile": "[ -d src/builder ] && ./node_modules/.bin/babel src/builder --out-dir lib/builder || true",
     "prestart": "npm run bundle && npm run transpile",
@@ -20,6 +14,9 @@
   "engines": {
     "node": ">=4",
     "npm": ">=3"
+  },
+ "directories": {
+    "lib": "lib"
   },
   "repository": {
     "type": "git",

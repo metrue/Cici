@@ -4,7 +4,7 @@ import ejs from 'ejs'
 import mkdirp from 'mkdirp'
 import { createRenderer } from 'vue-server-renderer'
 
-import CONFIG from '../../config/build.json'
+import CONFIG from '../../config'
 import PostPage from '../pages/js/PostPage.build.js'
 import HomePage from '../pages/js/HomePage.build.js'
 import { parseName } from '../utils'

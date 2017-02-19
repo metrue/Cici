@@ -1,5 +1,5 @@
 import { parseName } from '../../../utils'
-import CONFIG from '../../../../config/build'
+import CONFIG from '../../../../config'
 
 export default {
   name: 'listView',

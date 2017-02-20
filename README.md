@@ -7,39 +7,27 @@ Yet another static website generator built on top of Vue 2 and Webpack
 
 ### Usage
 
-* update the config.json with your personal information
-* start write something in markdown
-* then build your site
-
 ```
-  npm run build # to generate your site in your defined directory
-  npm run serve # to watch your site live
-```
+$ cici -h
 
-and you can also build and run it with docker like this.
+  Usage: cici [options]
 
-```
-  docker build -f devops/dockerfile.nginx -t seal .
-  docker run -d -p 80:80 seal
+  Options:
+
+    -h, --help                  output usage information
+    -V, --version               output the version number
+    -i, --inputDir <path>       Your posts directory, "./posts" by default
+    -o, --ouputDir <path>       Specify the output directory, "./public" by default
+    -t, --title <website name>  Your website name
 ```
 
-then you can check your site at http://localhost now, normally I would like to deploy it to VPS use a small script.
+it's easy, right?
 
 ```
-## deploy.sh
-
-ssh <$user>@<$host> <<END
-  docker rmi \$(docker images --filter "dangling=true" -q --no-trunc)
-  rm -rf /tmp/
-  git clone git@github.com:metrue/Sira.git /tmp/seal
-  git clone https://github.com/metrue/Seal /tmp/seal
-  cd /tmp/seal
-  docker build -f devops/dockerfile.nginx -t seal .
-  docker run -d -p 80:80 seal
-END
+npm install -g cici  # install cici
+cici -i posts -o public -t minghe -g 'UA-527xxx-x' -d minghe.me" # build your markdown posts to a static website
+cici -h # show help
 ```
-
-then put it into npm script, hit <code> npm run deploy </code> to do the deployment. That's it, have fun.
 
 ## Showcase
 

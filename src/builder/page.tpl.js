@@ -22,7 +22,7 @@ const tpl = `
 <body>
   <%- pageBody %>
   <div id="YoYo"></div>
-  <script src="http://45.33.106.101/dist/Yo/index.js"></script>
+  <script src="https://yoyo.minghe.me/dist/Yo/index.js"></script>
   <footer class="footer">
     Copyright ©<%= copyRightYear %> <a href="http://<%= %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
   </footer>

@@ -21,6 +21,8 @@ const tpl = `
 </head>
 <body>
   <%- pageBody %>
+  <div id="YoYo"></div>
+  <script src="https://cdn.rawgit.com/metrue/Yo/master/dist/index.js"></script>
   <footer class="footer">
     Copyright ©<%= copyRightYear %> <a href="http://<%= %>"> <%= domain %></a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> on top of <a href="https://vuejs.org" target="_blank">Vue.js</a>
   </footer>

@@ -1,7 +1,7 @@
 {
   "name": "cici",
-  "version": "0.0.8",
-  "description": "Yet another static website generator built on top of Vue 2 and Webpack",
+  "version": "0.0.9",
+  "description": "Yet another static website generator built on top of Vue 2 and Webpack, with a nice comment system",
   "bin": "./bin/cici.js",
   "scripts": {
     "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",

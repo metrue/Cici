@@ -1,31 +1,24 @@
 const path = require('path')
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
-const pkg = require('./package.json')
-// Adds a banner to the top of each generated chunk.
-const banner = `
-${pkg.description}
-v${pkg.version} ©${new Date().getFullYear()} ${pkg.author}
-${pkg.homepage}
-`.trim()
+const fs = require('fs')
+const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const OUTPUT_DIR = './lib/pages'
+const OUTPUT_DIR = './dist'
+
+function listAllPosts() {
+  const postsDir = path.join(__dirname, './posts')
+  return fs.readdirSync(postsDir).map((fn) => fn.replace(/\.md/, '.html'))
+}
 
 module.exports = [{
   target: 'node',
-  entry: {
-    PostPage: './src/pages/PostPage.js',
-    HomePage: './src/pages/HomePage.js'
-  },
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, OUTPUT_DIR),
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
     publicPath: '/',
-    // filename: isProd ? 'build.[chunkhash:5].js' : 'build.js'
-    filename: 'js/[name].build.js'
+    filename: '[name].js'
   },
   resolve: {
     alias: {
@@ -61,20 +54,13 @@ module.exports = [{
     ]
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      vue: {
-        loaders: {
-          stylus: ExtractTextPlugin.extract({
-            loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
-            fallbackLoader: 'vue-style-loader'
-          })
-        }
+    new StaticSiteGeneratorPlugin({
+      paths: listAllPosts(),
+      locals: {
+        // Properties here are merged into `locals`
+        // passed to the exported render function
+        greet: 'Hello'
       }
-    }),
-    new ExtractTextPlugin({
-      filename: './css/build.[name].css',
-      disable: false,
-      allChunks: true
     })
   ],
   devServer: {
@@ -85,21 +71,3 @@ module.exports = [{
   },
   devtool: isProd ? false : '#eval-source-map'
 }]
-
-// production build setting
-if (isProd) {
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      }
-    }),
-    new webpack.BannerPlugin(banner)
-  ])
-}

@@ -16,3 +16,5 @@ $RECYCLE.BIN/
 dist/
 _site/
 public/
+lib
+tmp

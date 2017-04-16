@@ -6,7 +6,8 @@ const config = require('../config')
 const home = require('./home')
 const post = require('./post')
 
-const css = require('../src/pages/components/Post/Post.styl')
+const postCss = require('./styles/post.styl')
+const homeCss = require('./styles/home.styl')
 
 const list = (() => {
   const postsDir = path.join('./posts')
@@ -18,13 +19,13 @@ module.exports = function render(locals, cb) {
   if (locals.path === '/') {
     const List = home('title-home', list)
     renderer.renderToString(new List(), (err, html) => {
-      const result = template.home({ ...config, content: html, css })
+      const result = template.home({ ...config, content: html, css: homeCss })
       cb(err, result)
     })
   } else {
     const Post = post(locals.path)
     renderer.renderToString(new Post(), (err, html) => {
-      const result = template.post({ ...config, content: html, css })
+      const result = template.post({ ...config, content: html, css: postCss })
       cb(err, result)
     })
   }

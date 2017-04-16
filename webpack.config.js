@@ -1,5 +1,7 @@
 const path = require('path')
 const fs = require('fs')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -46,6 +48,10 @@ module.exports = [{
         options: {
           name: '[name].[ext]?[chunkhash:5]'
         }
+      },
+      {
+        test: /\.styl$/,
+        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
       }
     ],
     noParse: [
@@ -54,6 +60,21 @@ module.exports = [{
     ]
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      vue: {
+        loaders: {
+          stylus: ExtractTextPlugin.extract({
+            loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
+            fallbackLoader: 'vue-style-loader'
+          })
+        }
+      }
+    }),
+    new ExtractTextPlugin({
+      filename: './css/build.[name].css',
+      disable: false,
+      allChunks: true,
+    }),
     new StaticSiteGeneratorPlugin({
       paths: listAllPosts(),
       locals: {

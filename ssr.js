@@ -8,6 +8,8 @@ const parseName = require('./src/utils').parseName
 const template = require('./template')
 const config = require('./config')
 
+const css = require('./src/pages/components/Post/Post.styl')
+
 function componentFactery(srcFile) {
   const markdown = fs.readFileSync(srcFile, 'utf8')
   return Vue.component('Post', {
@@ -50,7 +52,7 @@ function createPath(p) {
 module.exports = function render(locals, cb) {
   const srcFile = createPath(locals.path)
   renderer.renderToString(createInstance(srcFile), (err, html) => {
-    const result = ejs.render(template.PAGE, { ...config, pageBody: html })
+    const result = template.PAGE({ ...config, content: html, css })
     cb(err, result)
   })
 }

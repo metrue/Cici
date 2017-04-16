@@ -1,5 +1,5 @@
 const Vue = require('vue')
-const parseName = require('./src/utils').parseName
+const parseName = require('./utils').parseName
 
 // TODO key is not set
 function componentFactory(title, list) {

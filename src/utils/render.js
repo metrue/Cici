@@ -31,7 +31,7 @@ renderer.code = (code, lang) => {
 marked.setOptions({
   renderer,
   breaks: true,
-  gfm: true
+  gfm: true,
 })
 
 export default marked

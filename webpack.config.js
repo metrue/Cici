@@ -8,10 +8,10 @@ const isProd = process.env.NODE_ENV === 'production'
 
 const OUTPUT_DIR = './dist'
 
-function listAllPosts() {
+const list = (() => {
   const postsDir = path.join(__dirname, './posts')
   return fs.readdirSync(postsDir).map((fn) => fn.replace(/\.md/, '.html'))
-}
+})()
 
 module.exports = [{
   target: 'node',
@@ -20,44 +20,44 @@ module.exports = [{
     path: path.resolve(__dirname, OUTPUT_DIR),
     libraryTarget: 'umd',
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.common.js'
-    }
+      vue$: 'vue/dist/vue.common.js',
+    },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[chunkhash:5]'
-        }
+          name: '[name].[ext]?[chunkhash:5]',
+        },
       },
       {
         test: /\.styl$/,
-        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
-      }
+        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/',
+      },
     ],
     noParse: [
       /\.min\.js$/,
-      /es6-promise\.js$/
-    ]
+      /es6-promise\.js$/,
+    ],
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
@@ -65,10 +65,10 @@ module.exports = [{
         loaders: {
           stylus: ExtractTextPlugin.extract({
             loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
-            fallbackLoader: 'vue-style-loader'
-          })
-        }
-      }
+            fallbackLoader: 'vue-style-loader',
+          }),
+        },
+      },
     }),
     new ExtractTextPlugin({
       filename: './css/build.[name].css',
@@ -76,19 +76,19 @@ module.exports = [{
       allChunks: true,
     }),
     new StaticSiteGeneratorPlugin({
-      paths: listAllPosts(),
+      paths: [...list, '/'],
       locals: {
         // Properties here are merged into `locals`
         // passed to the exported render function
-        greet: 'Hello'
-      }
-    })
+        greet: 'Hello',
+      },
+    }),
   ],
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    contentBase: OUTPUT_DIR + '../publish',
-    host: '0.0.0.0'
+    contentBase: `${OUTPUT_DIR}../publish`,
+    host: '0.0.0.0',
   },
-  devtool: isProd ? false : '#eval-source-map'
+  devtool: isProd ? false : '#eval-source-map',
 }]

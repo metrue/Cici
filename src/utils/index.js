@@ -22,7 +22,7 @@ export function onlyDate (title) {
 }
 
 export function parseName(filename) {
-  const re = /(\d\d\d\d-\d\d-\d\d)-(.*)\.md/
+  const re = /(\d\d\d\d-\d\d-\d\d)-(.*)\.[md|html]/
   const matches = filename.match(re)
   if (matches.length === 3) {
     return {

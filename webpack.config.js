@@ -1,64 +1,63 @@
 const path = require('path')
+const fs = require('fs')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
-const pkg = require('./package.json')
-// Adds a banner to the top of each generated chunk.
-const banner = `
-${pkg.description}
-v${pkg.version} ©${new Date().getFullYear()} ${pkg.author}
-${pkg.homepage}
-`.trim()
+const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const OUTPUT_DIR = './lib/pages'
+const OUTPUT_DIR = './public'
+
+const list = (() => {
+  const postsDir = path.join(__dirname, './posts')
+  return fs.readdirSync(postsDir).map((fn) => fn.replace(/\.md/, '.html'))
+})()
 
 module.exports = [{
   target: 'node',
-  entry: {
-    PostPage: './src/pages/PostPage.js',
-    HomePage: './src/pages/HomePage.js'
-  },
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, OUTPUT_DIR),
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
     publicPath: '/',
-    // filename: isProd ? 'build.[chunkhash:5].js' : 'build.js'
-    filename: 'js/[name].build.js'
+    filename: '[name].js',
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.common.js'
-    }
+      vue$: 'vue/dist/vue.common.js',
+    },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[chunkhash:5]'
-        }
-      }
+          name: '[name].[ext]?[chunkhash:5]',
+        },
+      },
+      {
+        test: /\.styl$/,
+        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/',
+      },
     ],
     noParse: [
       /\.min\.js$/,
-      /es6-promise\.js$/
-    ]
+      /es6-promise\.js$/,
+    ],
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
@@ -66,40 +65,30 @@ module.exports = [{
         loaders: {
           stylus: ExtractTextPlugin.extract({
             loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
-            fallbackLoader: 'vue-style-loader'
-          })
-        }
-      }
+            fallbackLoader: 'vue-style-loader',
+          }),
+        },
+      },
     }),
     new ExtractTextPlugin({
       filename: './css/build.[name].css',
       disable: false,
-      allChunks: true
-    })
+      allChunks: true,
+    }),
+    new StaticSiteGeneratorPlugin({
+      paths: [...list, '/'],
+      locals: {
+        // Properties here are merged into `locals`
+        // passed to the exported render function
+        greet: 'Hello',
+      },
+    }),
   ],
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    contentBase: OUTPUT_DIR + '../publish',
-    host: '0.0.0.0'
+    contentBase: OUTPUT_DIR,
+    host: '0.0.0.0',
   },
-  devtool: isProd ? false : '#eval-source-map'
+  devtool: isProd ? false : '#eval-source-map',
 }]
-
-// production build setting
-if (isProd) {
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      }
-    }),
-    new webpack.BannerPlugin(banner)
-  ])
-}

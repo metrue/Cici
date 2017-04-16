@@ -4,11 +4,8 @@
   "description": "Yet another static website generator built on top of Vue 2 and Webpack, with a nice comment system",
   "bin": "./bin/cici.js",
   "scripts": {
-    "bundle": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "transpile": "./node_modules/.bin/babel src/utils --out-dir lib/utils && ./node_modules/.bin/babel src/builder --out-dir lib/builder ",
-    "prestart": "npm run bundle && npm run transpile",
-    "prepublish": "npm run bundle && npm run transpile",
-    "start": "./bin/cici.js && http-server public",
+    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
+    "develop": "webpack-dev-server -d",
     "pretest": "npm run transpile",
     "test": "mocha --ui bdd --compilers js:babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks -t 10000 test"
   },

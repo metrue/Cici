@@ -87,7 +87,7 @@ module.exports = [{
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    contentBase: `${OUTPUT_DIR}../publish`,
+    contentBase: OUTPUT_DIR,
     host: '0.0.0.0',
   },
   devtool: isProd ? false : '#eval-source-map',

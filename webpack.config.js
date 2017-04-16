@@ -6,7 +6,7 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const OUTPUT_DIR = './dist'
+const OUTPUT_DIR = './public'
 
 const list = (() => {
   const postsDir = path.join(__dirname, './posts')

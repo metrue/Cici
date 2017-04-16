@@ -5,8 +5,7 @@
   "bin": "./bin/cici.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "develop": "webpack-dev-server -d",
-    "pretest": "npm run transpile",
+    "develop": "webpack -p --progress && webpack-dev-server -d",
     "test": "mocha --ui bdd --compilers js:babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks -t 10000 test"
   },
   "engines": {

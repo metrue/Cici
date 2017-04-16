@@ -8,26 +8,11 @@ Yet another static website generator built on top of Vue 2 and Webpack, with a n
 ### Usage
 
 ```
-$ cici -h
-
-  Usage: cici [options]
-
-  Options:
-
-    -h, --help                  output usage information
-    -V, --version               output the version number
-    -i, --inputDir <path>       Your posts directory, "./posts" by default
-    -o, --ouputDir <path>       Specify the output directory, "./public" by default
-    -t, --title <website name>  Your website name
+$ git clone https://github.com/metrue/Cici
+$ vim posts/<you-new-post.md>
+$ npm run build
 ```
-
-it's easy, right?
-
-```
-npm install -g cici  # install cici
-cici -i posts -o public -t minghe -g 'UA-527xxx-x' -d minghe.me" # build your markdown posts to a static website
-cici -h # show help
-```
+Your static website is ready under *public/* directory, it's easy, right?
 
 ## Showcase
 

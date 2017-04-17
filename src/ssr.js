@@ -15,7 +15,7 @@ const list = (() => {
 
 module.exports = function render(locals, cb) {
   if (locals.path === '/') {
-    const List = home('title-home', list)
+    const List = home(config.siteName, list)
     renderer.renderToString(new List(), (err, html) => {
       const result = template.home({
         ...config,

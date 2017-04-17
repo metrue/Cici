@@ -9,10 +9,11 @@ Yet another static website generator built on top of Vue 2 and Webpack, with a n
 
 ```
 $ git clone https://github.com/metrue/Cici
-$ vim posts/<you-new-post.md>
-$ npm run build
+$ vim posts/<your-new-post.md>
+$ npm run develop
 ```
-Your static website is ready under *public/* directory, it's easy, right?
+
+Your static website is ready on http://localhost:8080, it's easy, right?
 
 ## Showcase
 

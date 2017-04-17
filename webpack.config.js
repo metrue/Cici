@@ -77,11 +77,7 @@ module.exports = [{
     }),
     new StaticSiteGeneratorPlugin({
       paths: [...list, '/'],
-      locals: {
-        // Properties here are merged into `locals`
-        // passed to the exported render function
-        greet: 'Hello',
-      },
+      locals: {},
     }),
   ],
   devServer: {

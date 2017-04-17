@@ -7,6 +7,14 @@ Yet another static website generator built on top of Vue 2 and Webpack, with a n
 
 ### Usage
 
+* from docker
+
+```
+  docker run -p 80:80 -v /Users/mhuang/Codes/minghe.me/posts:/opt/cici/posts cici
+```
+
+* from source code
+
 ```
 $ git clone https://github.com/metrue/Cici
 $ vim posts/<your-new-post.md>

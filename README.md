@@ -9,8 +9,18 @@ Yet another static website generator built on top of Vue 2 and Webpack, with a n
 
 * from docker
 
+build your own posts
 ```
-  docker run -p 80:80 -v /Users/mhuang/Codes/minghe.me/posts:/opt/cici/posts cici
+  docker run -p 80:80 \
+    -v <your posts directory>:/opt/cici/posts \
+    metrue/cici
+```
+build output to your own local **public** directory
+```
+  docker run -p 80:80 \
+    -v <your posts directory>:/opt/cici/posts \
+    -v <your public directory>:/opt/cici/public \
+    metrue/cici
 ```
 
 * from source code
@@ -27,10 +37,6 @@ Your static website is ready on http://localhost:8080, it's easy, right?
 
 * [小聊电台](https://asmalltalk.com)
 * [minghe.me](https://minghe.me)
-
-## Thanks
-
-inspired by [vue-ghpages-blog](https://github.com/viko16/vue-ghpages-blog)
 
 ## LICENSE
 

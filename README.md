@@ -40,4 +40,4 @@ Your static website is ready on http://localhost:8080, it's easy, right?
 MIT
 
 ## Screenshot
-<img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png" style="max-width: 260px">
+<img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png" style="width: 260px">

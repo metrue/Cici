@@ -1,6 +1,3 @@
-![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png =200x) 
-![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png =200x)
-
 # Cici
 
 Yet another static website generator built on top of Vue 2 and Webpack, with a nice comment system
@@ -41,3 +38,7 @@ Your static website is ready on http://localhost:8080, it's easy, right?
 ## LICENSE
 
 MIT
+
+## Screenshot
+![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png) 
+![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png)

@@ -1,7 +1,15 @@
-<img src="https://raw.githubusercontent.com/metrue/Seal/master/screenshots/home.png" alt="home" style="width: 300px;"/>
-<img src="https://raw.githubusercontent.com/metrue/Seal/master/screenshots/post.png" alt="home" style="width: 300px;"/>
+<table border="0">
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png" alt="home" style="width: 300px;"/>
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png" alt="home" style="width: 300px;"/>
+    </td>
+  </tr>
+</table>
 
-# Seal
+# Cici
 
 Yet another static website generator built on top of Vue 2 and Webpack, with a nice comment system
 

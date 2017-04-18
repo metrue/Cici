@@ -1,4 +1,5 @@
-![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png =200x) ![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png =200x)
+![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png =200x) 
+![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png =200x)
 
 # Cici
 

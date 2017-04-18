@@ -1,13 +1,4 @@
-<table border="0">
-  <tr>
-    <td style="max-width: 260px">
-      <img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png" alt="home" style="width: 300px;"/>
-    </td>
-    <td style="max-width: 260px">
-      <img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png" alt="home" style="width: 300px;"/>
-    </td>
-  </tr>
-</table>
+![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png =200x) ![](https://raw.githubusercontent.com/metrue/Cici/master/screenshots/post.png =200x)
 
 # Cici
 

@@ -52,7 +52,7 @@ const post = ({ title, domain, css, content, copyRightYear }) => `
   <div id="YoYo"></div>
   <script src="https://yoyo.minghe.me/dist/Yo/index.js"></script>
   <footer class="footer">
-    Copyright ©${copyRightYear} <a href="http://<%= %>"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a>
+    Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a>
   </footer>
 <body>
 </html>

@@ -11,9 +11,9 @@ function componentFactery(srcFile) {
       <section class="post-view">
         <h1 class="post-title">
           {{ title }}
-          <time pubdate="pubdate" :datetime="publishDate | formatDate" :title="publishDate | formatDate" class="post-date">{{ publishDate | timeago }}</time>
         </h1>
         <article v-html="htmlFromMarkdown"></article>
+        <time pubdate="pubdate" :datetime="publishDate | formatDate" :title="publishDate | formatDate" class="post-date">{{ publishDate | timeago }}</time>
       </section>
     `,
 

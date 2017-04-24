@@ -1,4 +1,4 @@
-const home = ({ title, domain, css, content, copyRightYear }) => `
+const home = ({ siteName, domain, css, content, copyRightYear }) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@ const home = ({ title, domain, css, content, copyRightYear }) => `
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width,user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta name="theme-color" content="#ffffff">
-  <title> ${title} </title>
+  <title> ${siteName} </title>
   <style>${css}</style>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

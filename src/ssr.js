@@ -29,6 +29,7 @@ module.exports = function render(locals, cb) {
     renderer.renderToString(new Post(), (err, html) => {
       const result = template.post({
         ...config,
+        title: locals.path.replace(/^\//, '').replace(/\.html/, ''),
         content: html,
         css: styles.post,
       })

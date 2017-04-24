@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "develop": "webpack -p --progress && webpack-dev-server -d",
     "test": "mocha --ui bdd --compilers js:babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks -t 10000 test",
-    "build-docker-image": "docker build -f devops/dockerfile -t cici ."
+    "deploy-image": "docker build -f devops/dockerfile -t metrue/cici:latest . && docker push metrue/cici"
   },
   "engines": {
     "node": ">=4",

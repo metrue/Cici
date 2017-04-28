@@ -1,5 +1,7 @@
 # Cici
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/metrue/Cici.svg)](https://greenkeeper.io/)
+
 Yet another static website generator built on top of Vue 2 and Webpack, with a nice comment system
 
 ### Usage

@@ -50,7 +50,7 @@ const post = ({ title, domain, css, content, copyRightYear }) => `
 <body>
   ${content}
   <div id="YoYo"></div>
-  <script src="https://yoyo.minghe.me/dist/v0.1/index.js"></script>
+  <script src="https://client.yiqie.me/dist/index.js"></script>
   <footer class="footer">
     Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a>
   </footer>

@@ -1,4 +1,4 @@
-const home = ({ siteName, domain, css, content, copyRightYear }) => `
+const home = ({ siteName, domain, css, content, ga, copyRightYear }) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@ const home = ({ siteName, domain, css, content, copyRightYear }) => `
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '<%= ga %>', 'auto');
+    ga('create', '${ga}', 'auto');
     ga('send', 'pageview');
   </script>
 </head>
@@ -27,7 +27,7 @@ const home = ({ siteName, domain, css, content, copyRightYear }) => `
 </html>
 `
 
-const post = ({ title, domain, css, content, copyRightYear }) => `
+const post = ({ title, domain, css, content, ga, copyRightYear }) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,7 @@ const post = ({ title, domain, css, content, copyRightYear }) => `
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '<%= ga %>', 'auto');
+    ga('create', '${ga}', 'auto');
     ga('send', 'pageview');
   </script>
 </head>

@@ -21,7 +21,7 @@ const home = ({ siteName, domain, css, content, ga, copyRightYear }) => `
 <body>
   ${content}
   <footer class="footer">
-    Copyright ©${copyRightYear} <a href="http://<%= %>"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a>
+    Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> with <a href="https://github.com/metrue/Cici">YoYO</a> as comment engine
   </footer>
 <body>
 </html>
@@ -52,7 +52,8 @@ const post = ({ title, domain, css, content, ga, copyRightYear }) => `
   <div id="YoYo"></div>
   <script src="https://yiqie.me/client/dist/index.js"></script>
   <footer class="footer">
-    Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a>
+    Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> with <a href="https://github.com/metrue/Cici">YoYO</a> as comment engine
+
   </footer>
 <body>
 </html>

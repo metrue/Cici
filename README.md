@@ -41,3 +41,7 @@ MIT
 
 ## Screenshot
 <img src="https://raw.githubusercontent.com/metrue/Cici/master/screenshots/home.png" width="260px" />
+
+## Deps
+
+![](https://ndv.glitch.me/ipfs/js-ipfs.svg?ratio=0.2)

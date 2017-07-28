@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk --no-cache add nginx nodejs nodejs-npm tini
+RUN apk --no-cache add nginx nodejs tini nodejs-npm
 
 COPY devops/nginx.conf /etc/nginx/nginx.conf
 WORKDIR /opt/cici

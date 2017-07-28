@@ -17,6 +17,7 @@ function componentFactory(title, list) {
             <a v-bind:href="'./' + publishDate + '-' + title + '.html'" class="item-title">
               {{ title }}
             </a>
+            <span class="item-date"> {{ publishDate }}</span>
           </li>
         </ol>
       </section>

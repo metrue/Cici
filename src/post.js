@@ -13,7 +13,6 @@ function componentFactery(srcFile) {
           {{ title }}
         </h1>
         <article v-html="htmlFromMarkdown"></article>
-        <time pubdate="pubdate" :datetime="publishDate | formatDate" :title="publishDate | formatDate" class="post-date">{{ publishDate | timeago }}</time>
       </section>
     `,
 

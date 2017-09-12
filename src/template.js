@@ -46,6 +46,13 @@ const post = ({ title, domain, css, content, ga, copyRightYear }) => `
     ga('create', '${ga}', 'auto');
     ga('send', 'pageview');
   </script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+	(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-8958230776887606",
+		enable_page_level_ads: true
+ 	});
+  </script>
 </head>
 <body>
   ${content}

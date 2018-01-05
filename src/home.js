@@ -1,3 +1,4 @@
+import path from 'path'
 const Vue = require('vue')
 const parseName = require('./utils').parseName
 
@@ -7,7 +8,7 @@ function componentFactory(title, list) {
     template: `
       <section class="list-view">
         <header class="header">
-          <a href="/">{{ title }}</router-link>
+          <a href="/about.html">{{ title }}</router-link>
           <div style="clear: both">
           </div>
         </header>
@@ -23,7 +24,14 @@ function componentFactory(title, list) {
       </section>
     `,
     data: () => {
-      const newList = list.map((p) => parseName(p))
+      const newList = list
+            .filter((p) => {
+              return !/about/.test(p)
+            })
+            .map((p) => {
+              const filepath = path.join('public', p)
+              return parseName(filepath)
+            })
       const sortedList = newList.sort((a, b) => {
         if (a.publishDate < b.publishDate) {
           return 1

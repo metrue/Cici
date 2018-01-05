@@ -1,3 +1,6 @@
+import path from 'path'
+import fs from 'fs'
+
 export function onlyTitle(title) {
   return title.replace(/\.md$/, '')
               .replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '')
@@ -10,11 +13,15 @@ export function onlyDate(title) {
 export function parseName(filename) {
   const re = /(\d\d\d\d-\d\d-\d\d)-(.*)\.[md|html]/
   const matches = filename.match(re)
-  if (matches.length === 3) {
+  if (matches && matches.length === 3) {
     return {
       publishDate: matches[1],
       title: matches[2],
     }
   }
-  throw new Error(`invalid file name: ${filename}`)
+  const date = fs.statSync(filename).ctime.toISOString().split('T')[0]
+  return {
+    publishDate: date,
+    title: path.basename(filename).replace(/\.[^/.]+$/, ''),
+  }
 }

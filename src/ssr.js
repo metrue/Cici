@@ -12,7 +12,6 @@ const list = (() => {
   return fs.readdirSync(postsDir).map((fn) => fn.replace(/\.md/, '.html'))
 })()
 
-
 module.exports = function render(locals, cb) {
   if (locals.path === '/') {
     const List = home(config.siteName, list)

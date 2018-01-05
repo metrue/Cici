@@ -8,8 +8,18 @@ function componentFactory(title, list) {
     template: `
       <section class="list-view">
         <header class="header">
-          <a href="/about.html">{{ title }}</router-link>
           <div style="clear: both">
+            <a class="site-title" href="/about.html">{{ title }}</a>
+          </div>
+          <div style="clear: both">
+          <ul>
+            <li>
+                <a class="about" href="about.html"> About </a>
+            </li>
+            <li>
+                <a class="about" href="https://github.com/metrue"> Codes </a>
+            </li>
+          </ul>
           </div>
         </header>
         <div v-if="!lists">loading..</div>

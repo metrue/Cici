@@ -57,7 +57,7 @@ const post = ({ title, domain, css, content, ga, copyRightYear }) => `
 <body>
   ${content}
   <div id="YoYo"></div>
-  <script src="https://c.minghe.me/client/dist/index.js"></script>
+  <script src="https://s3.amazonaws.com/yoyo-client-production/dist/index.js"></script>
   <footer class="footer">
     Copyright ©${copyRightYear} <a href="http://${domain}"> ${domain}</a> | Powered by <a href="https://github.com/metrue/Cici">Cici</a> with <a href="https://github.com/metrue/YoYo">YoYo</a> as comment engine
 
